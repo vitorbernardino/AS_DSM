@@ -5,6 +5,7 @@ import '../../services/database_service.dart';
 import '../../models/task_model.dart';
 import 'widgets/add_task_widget.dart';
 import 'widgets/task_card.dart';
+import '../external/external_tasks_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,6 +20,17 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Todo List'),
         actions: [
           IconButton(
+            tooltip: 'Ver Tarefas da API',
+            icon: const Icon(Icons.public, color: Colors.blueAccent),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ExternalTasksScreen()),
+              );
+            },
+          ),
+          IconButton(
+            tooltip: 'Sair',
             icon: const Icon(Icons.exit_to_app, color: Colors.redAccent),
             onPressed: () => auth.signOut(),
           )
